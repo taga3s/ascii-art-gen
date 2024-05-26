@@ -7,19 +7,19 @@ import (
 )
 
 // Load loads an image from a file.
-func Load(path string) image.Image {
+func Load(path string) (image.Image, error) {
 	file, err := os.Open(path)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 	defer file.Close()
 
 	img, _, err := image.Decode(file)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
-	return img
+	return img, nil
 }
 
 // Resize resizes an image to a given width and height.
@@ -43,12 +43,15 @@ func Resize(img image.Image, magnification float64) (image.Rectangle, int, int) 
 }
 
 // UnSync unsynchronizes an image file.
-func UnSync(dest *image.RGBA) {
+func UnSync(dest *image.RGBA) error {
 	tmp, err := os.Create("tmp.png")
 	if err != nil {
-		panic(err)
+		return err
 	}
 	defer tmp.Close()
+
 	png.Encode(tmp, dest)
 	os.Remove("tmp.png")
+
+	return nil
 }

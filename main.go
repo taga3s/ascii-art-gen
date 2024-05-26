@@ -56,16 +56,22 @@ func main() {
 }
 
 func run(inputs Inputs) {
-	srcImg := img.Load(inputs.path)
+	srcImg, err := img.Load(inputs.path)
+	if err != nil {
+		log.Fatalf("Error: %v", err)
+	}
 
-	rct, w, h := img.Resize(srcImg, inputs.magnification)
+	rect, w, h := img.Resize(srcImg, inputs.magnification)
 
 	dest := image.NewRGBA(image.Rect(0, 0, w, h))
-	draw.CatmullRom.Scale(dest, dest.Bounds(), srcImg, rct, draw.Over, nil)
+	draw.CatmullRom.Scale(dest, dest.Bounds(), srcImg, rect, draw.Over, nil)
 
 	output := asciiArt.Generate(dest, inputs.threshold)
 
 	fmt.Print(output)
 
-	img.UnSync(dest)
+	err = img.UnSync(dest)
+	if err != nil {
+		log.Fatalf("Error: %v", err)
+	}
 }
