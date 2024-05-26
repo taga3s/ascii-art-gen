@@ -13,8 +13,9 @@ import (
 )
 
 type Inputs struct {
-	path      string
-	threshold int
+	path          string
+	threshold     int
+	magnification float64
 }
 
 func main() {
@@ -28,6 +29,13 @@ func main() {
 				Usage:       "threshold for ASCII art generation",
 				Value:       128,
 				Destination: &inputs.threshold,
+			},
+			&cli.Float64Flag{
+				Name:        "magnification",
+				Aliases:     []string{"m"},
+				Usage:       "magnification factor for ASCII art generation",
+				Value:       1,
+				Destination: &inputs.magnification,
 			},
 		},
 		Action: func(c *cli.Context) error {
@@ -50,7 +58,7 @@ func main() {
 func run(inputs Inputs) {
 	srcImg := img.Load(inputs.path)
 
-	rct, w, h := img.Resize(srcImg)
+	rct, w, h := img.Resize(srcImg, inputs.magnification)
 
 	dest := image.NewRGBA(image.Rect(0, 0, w, h))
 	draw.CatmullRom.Scale(dest, dest.Bounds(), srcImg, rct, draw.Over, nil)

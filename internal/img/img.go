@@ -23,11 +23,11 @@ func Load(path string) image.Image {
 }
 
 // Resize resizes an image to a given width and height.
-func Resize(img image.Image) (image.Rectangle, int, int) {
+func Resize(img image.Image, magnification float64) (image.Rectangle, int, int) {
 	rect := img.Bounds()
 
 	w, h := 0, 0
-	arg := 360.0
+	arg := 180.0 * magnification
 
 	if rect.Dx() > rect.Dy() {
 		m := arg / float64(rect.Dx())
