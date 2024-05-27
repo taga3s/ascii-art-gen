@@ -4,12 +4,10 @@ import (
 	asciiArt "ascii-art-gen/internal/ascii_art"
 	"ascii-art-gen/internal/img"
 	"fmt"
-	"image"
 	"log"
 	"os"
 
 	"github.com/urfave/cli/v2"
-	"golang.org/x/image/draw"
 )
 
 type Inputs struct {
@@ -61,16 +59,13 @@ func run(inputs Inputs) {
 		log.Fatalf("Error: %v", err)
 	}
 
-	rect, w, h := img.Resize(srcImg, inputs.magnification)
+	resizedImg := img.Resize(srcImg, inputs.magnification)
 
-	dest := image.NewRGBA(image.Rect(0, 0, w, h))
-	draw.CatmullRom.Scale(dest, dest.Bounds(), srcImg, rect, draw.Over, nil)
-
-	output := asciiArt.Generate(dest, inputs.threshold)
+	output := asciiArt.Generate(resizedImg, inputs.threshold)
 
 	fmt.Print(output)
 
-	err = img.UnSync(dest)
+	err = img.UnSync(resizedImg)
 	if err != nil {
 		log.Fatalf("Error: %v", err)
 	}

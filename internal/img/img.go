@@ -4,6 +4,8 @@ import (
 	"image"
 	"image/png"
 	"os"
+
+	"golang.org/x/image/draw"
 )
 
 // Load loads an image from a file.
@@ -23,7 +25,7 @@ func Load(path string) (image.Image, error) {
 }
 
 // Resize resizes an image to a given width and height.
-func Resize(img image.Image, magnification float64) (image.Rectangle, int, int) {
+func Resize(img image.Image, magnification float64) *image.RGBA {
 	rect := img.Bounds()
 
 	w, h := 0, 0
@@ -39,7 +41,10 @@ func Resize(img image.Image, magnification float64) (image.Rectangle, int, int) 
 		h = int(arg)
 	}
 
-	return rect, w, h
+	dest := image.NewRGBA(image.Rect(0, 0, w, h))
+	draw.CatmullRom.Scale(dest, dest.Bounds(), img, rect, draw.Over, nil)
+
+	return dest
 }
 
 // UnSync unsynchronizes an image file.
