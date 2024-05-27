@@ -9,7 +9,7 @@ import (
 const char = "8"
 
 // Generate generates an ASCII art from an image.
-func Generate(dest *image.RGBA, threshold int) string {
+func Generate(dest image.Image, threshold int) string {
 	srcBounds := dest.Bounds()
 
 	asciiArt := strings.Builder{}

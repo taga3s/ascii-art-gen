@@ -2,6 +2,7 @@ package img
 
 import (
 	"image"
+	_ "image/jpeg"
 	"image/png"
 	"os"
 
@@ -48,14 +49,17 @@ func Resize(img image.Image, magnification float64) *image.RGBA {
 }
 
 // UnSync unsynchronizes an image file.
-func UnSync(dest *image.RGBA) error {
+func UnSync(dest image.Image) error {
 	tmp, err := os.Create("tmp.png")
 	if err != nil {
 		return err
 	}
 	defer tmp.Close()
 
-	png.Encode(tmp, dest)
+	err = png.Encode(tmp, dest)
+	if err != nil {
+		return err
+	}
 	os.Remove("tmp.png")
 
 	return nil
