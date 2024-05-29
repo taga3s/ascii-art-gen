@@ -1,7 +1,7 @@
 # ascii-art-gen
 
 A CLI tool that can generate ASCII Art from any image.  
-![demo_gif](https://github.com/ayanami77/ascii-art-gen/assets/107479598/ae6b6ec7-ed00-4923-b34b-0f5deac72e48)
+![demo](https://github.com/ayanami77/ascii-art-gen/assets/107479598/1246092b-11d6-4a2f-a16c-e9afbcf0ec92)
 
 ## Usage
 
@@ -32,3 +32,7 @@ Contributions are welcome! If you would like to contribute to this project, plea
 3. Make your changes and commit them.
 4. Push your changes to your forked repository.
 5. Submit a pull request to the original repository.
+
+## License
+
+MIT
