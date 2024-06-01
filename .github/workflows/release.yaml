@@ -1,8 +1,9 @@
 name: goreleaser
 
 on:
-  pull_request:
   push:
+    tags:
+      - "*"
 
 permissions:
   contents: write
@@ -18,12 +19,13 @@ jobs:
 
       - name: Set up Go
         uses: actions/setup-go@v4
+        with:
+          go-version-file: go.mod
+          cache: true
 
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v5
         with:
-          distribution: goreleaser
-          version: "~> v1"
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
