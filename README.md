@@ -1,12 +1,12 @@
 # ascii-art-gen
 
-A CLI tool that can generate ASCII Art from any image.
+A CLI tool for generating ASCII Art from any image you like.
 
-<img src="https://github.com/ayanami77/ascii-art-gen/assets/107479598/1246092b-11d6-4a2f-a16c-e9afbcf0ec92" width="720"/>  
+<img src="https://github.com/ayanami77/ascii-art-gen/assets/107479598/1246092b-11d6-4a2f-a16c-e9afbcf0ec92" width="660"/>
 
 ## Usage
 
-Here is basic command.
+Here is basic command. We support `.jpg (jpeg)` and `.png` image.
 
 ```
 $ ascii-art-gen ./cat.png
