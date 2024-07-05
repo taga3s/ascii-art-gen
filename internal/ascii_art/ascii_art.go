@@ -3,10 +3,18 @@ package asciiart
 import (
 	"image"
 	"image/color"
+	"math/rand"
 	"strings"
 )
 
-const char = "8"
+const (
+	chars = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+)
+
+func selectRandomly(chars string) string {
+	r := rand.Intn(len(chars))
+	return string(chars[r])
+}
 
 // Generate generates an ASCII art from an image.
 func Generate(dest image.Image, threshold int) string {
@@ -24,11 +32,11 @@ func Generate(dest image.Image, threshold int) string {
 			if gray.Y < uint8(threshold) {
 				line.WriteString(" ")
 			} else {
-				line.WriteString(char)
+				line.WriteString(selectRandomly(chars))
 			}
 		}
 
-		if strings.Contains(line.String(), char) {
+		if len(strings.Fields(line.String())) != 0 {
 			asciiArt.WriteString(line.String())
 			asciiArt.WriteString("\n")
 		}
