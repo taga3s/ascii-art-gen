@@ -2,8 +2,7 @@
 
 A CLI tool for generating ASCII Art from any image you like.
 
-<img src="https://github.com/ayanami77/Rhythmate-Web/assets/107479598/ce227b6f-398f-43c9-a362-797a75c6372c
-" width="660"/>
+![ascii-art-gen](https://github.com/ayanami77/ascii-art-gen/assets/107479598/31ac8872-90d0-4a59-a99a-ae4e9d6587df)
 
 ## Usage
 
