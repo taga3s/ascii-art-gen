@@ -2,7 +2,7 @@
 
 A CLI tool for generating ASCII Art from any image you like.
 
-<img src="https://github.com/ayanami77/ascii-art-gen/assets/107479598/1246092b-11d6-4a2f-a16c-e9afbcf0ec92" width="660"/>
+![ascii-art-gen](https://github.com/ayanami77/ascii-art-gen/assets/107479598/31ac8872-90d0-4a59-a99a-ae4e9d6587df)
 
 ## Usage
 
@@ -24,15 +24,22 @@ You can use `--magnification` or `-m` option to control the size of the ascii ar
 $ ascii-art-gen -m 2.0 ./cat.png
 ```
 
-## Contributions
+## Project setup
 
-Contributions are welcome! If you would like to contribute to this project, please follow these steps:
+- run app
+```
+$ go run main.go <image>
+```
 
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Make your changes and commit them.
-4. Push your changes to your forked repository.
-5. Submit a pull request to the original repository.
+- test
+```
+$ make test
+```
+
+- build
+```
+$ make build
+```
 
 ## License
 
