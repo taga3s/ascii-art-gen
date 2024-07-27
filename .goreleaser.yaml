@@ -48,5 +48,5 @@ changelog:
 brews:
   - repository:
       owner: ayanami77
-      name: homebrew-tap
+      name: homebrew-ascii-art-gen
       token: "{{ .Env.TAP_GITHUB_TOKEN }}"
