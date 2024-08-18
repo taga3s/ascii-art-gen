@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	chars = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+	validChars = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 )
 
 func selectRandomly(chars string) string {
@@ -32,7 +32,7 @@ func Generate(dest image.Image, threshold int) string {
 			if gray.Y < uint8(threshold) {
 				line.WriteString(" ")
 			} else {
-				line.WriteString(selectRandomly(chars))
+				line.WriteString(selectRandomly(validChars))
 			}
 		}
 

@@ -24,15 +24,15 @@ func main() {
 			&cli.IntFlag{
 				Name:        "threshold",
 				Aliases:     []string{"t"},
-				Usage:       "threshold for ASCII art generation",
+				Usage:       "the threshold for ASCII Art Generation",
 				Value:       128,
 				Destination: &inputs.threshold,
 			},
 			&cli.Float64Flag{
 				Name:        "magnification",
 				Aliases:     []string{"m"},
-				Usage:       "magnification factor for ASCII art generation",
-				Value:       1,
+				Usage:       "the magnification factor for ASCII Art Generation",
+				Value:       1.0,
 				Destination: &inputs.magnification,
 			},
 		},
@@ -42,7 +42,7 @@ func main() {
 			}
 			inputs.path = c.Args().Get(0)
 
-			run(inputs)
+			run(&inputs)
 
 			return nil
 		},
@@ -53,7 +53,7 @@ func main() {
 	}
 }
 
-func run(inputs Inputs) {
+func run(inputs *Inputs) {
 	srcImg, err := img.Load(inputs.path)
 	if err != nil {
 		log.Fatalf("Error: %v", err)
