@@ -10,6 +10,11 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
+const (
+	DefaultThreshold     = 128
+	DefaultMagnification = 1.0
+)
+
 type Inputs struct {
 	path          string
 	threshold     int
@@ -25,14 +30,14 @@ func main() {
 				Name:        "threshold",
 				Aliases:     []string{"t"},
 				Usage:       "the threshold for ASCII Art Generation",
-				Value:       128,
+				Value:       DefaultThreshold,
 				Destination: &inputs.threshold,
 			},
 			&cli.Float64Flag{
 				Name:        "magnification",
 				Aliases:     []string{"m"},
 				Usage:       "the magnification factor for ASCII Art Generation",
-				Value:       1.0,
+				Value:       DefaultMagnification,
 				Destination: &inputs.magnification,
 			},
 		},

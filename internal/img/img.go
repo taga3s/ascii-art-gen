@@ -9,7 +9,7 @@ import (
 	"golang.org/x/image/draw"
 )
 
-// Load loads an image from a file.
+// `Load` loads an image from a file.
 func Load(path string) (image.Image, error) {
 	file, err := os.Open(path)
 	if err != nil {
@@ -25,7 +25,7 @@ func Load(path string) (image.Image, error) {
 	return img, nil
 }
 
-// Resize resizes an image to a given width and height.
+// `Resize` resizes an image to a given width and height.
 func Resize(img image.Image, magnification float64) *image.RGBA {
 	rect := img.Bounds()
 
@@ -48,7 +48,7 @@ func Resize(img image.Image, magnification float64) *image.RGBA {
 	return dest
 }
 
-// UnSync unsynchronizes an image file.
+// `UnSync` unsynchronizes an image file.
 func UnSync(dest image.Image) error {
 	tmp, err := os.Create("tmp.png")
 	if err != nil {

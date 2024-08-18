@@ -16,7 +16,7 @@ func selectRandomly(chars string) string {
 	return string(chars[r])
 }
 
-// Generate generates an ASCII art from an image.
+// `Generate` generates an ASCII art from an image.
 func Generate(dest image.Image, threshold int) string {
 	srcBounds := dest.Bounds()
 
