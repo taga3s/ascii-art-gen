@@ -6,16 +6,16 @@ A CLI tool for generating ASCII Art from any image you like.
 
 ## Usage
 
-Here is basic command. We support `.jpg (jpeg)` and `.png` image.
+Here is basic command. It supports `.jpg (.jpeg)` and `.png` image.
 
 ```
 $ ascii-art-gen ./cat.png
 ```
 
-You can use `--threshold` or `-t` option to use any threshold. The default threshold is 128.
+You can use `--threshold` or `-t` option to use any threshold. The default threshold is determined automatically by [OTSU's method](https://en.wikipedia.org/wiki/Otsu%27s_method).
 
 ```
-$ ascii-art-gen -t 110 ./cat.png
+$ ascii-art-gen -t 128 ./cat.png
 ```
 
 You can use `--magnification` or `-m` option to control the size of the ascii art. The default magnification is 1.0.
@@ -29,6 +29,11 @@ $ ascii-art-gen -m 2.0 ./cat.png
 - run app
 ```
 $ go run main.go <image>
+```
+
+- format
+```
+$ make fmt
 ```
 
 - test
